@@ -94,7 +94,7 @@
         $username = "root"; 
         $password = "";
         $database = "phpproject"; 
-
+        //Hello this is the change
         $conn = mysqli_connect($server, $username, $password, $database);
 
         $Email = $_POST["email"];
