@@ -114,7 +114,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';
         
-          header("Location: index.php");
+            // header('Location: index.php');
             exit();
 
         }
