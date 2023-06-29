@@ -1,3 +1,44 @@
+<?php
+session_start();
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        $server = "localhost";
+        $username = "root"; 
+        $password = "";
+        $database = "phpproject"; 
+        //Hello this is the change
+        $conn = mysqli_connect($server, $username, $password, $database);
+
+        $name = $_POST["name"];
+        $Email = $_POST["email"];
+        $Pass = $_POST["pswd"];
+
+        $sql = "SELECT * FROM customer WHERE email='$Email' AND pwd='$Pass'";
+
+        $res = mysqli_query($conn, $sql);
+   
+        $num = mysqli_num_rows($res);
+    // hello
+        if($num == 1)
+        {
+         
+            $_SESSION['name']=$name;
+
+            header("Location: index.php");
+
+        }   
+        else
+        {
+          echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Soory!</strong>you are not Looged In🤔🤔.
+          <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+            <span>X</span>
+          </button>
+        </div>';
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,8 +86,12 @@
                                 <!-- <p class="text-muted mb-4">Create a login split page using Bootstrap 4.</p> -->
                                 <form action="login.php" method="post">
                                     <div class="form-group mb-3">
+                                        <input id="UserName" type="text" placeholder="User Name" required=""
+                                            autofocus="" name="name" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                    </div>
+                                    <div class="form-group mb-3">
                                         <input id="inputEmail" type="email" placeholder="Email address" required=""
-                                            autofocus="" name="email" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                             name="email" class="form-control rounded-pill border-0 shadow-sm px-4">
                                     </div>
                                     <div class="form-group mb-3">
                                         <input id="inputPassword" type="password" name="pswd" placeholder="Password" required=""
@@ -84,48 +129,3 @@
 </body>
 
 </html>
-
-<?php
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-                
-        $server = "localhost";
-        $username = "root"; 
-        $password = "";
-        $database = "phpproject"; 
-        //Hello this is the change
-        $conn = mysqli_connect($server, $username, $password, $database);
-
-        $Email = $_POST["email"];
-        $Pass = $_POST["pswd"];
-
-        $sql = "SELECT * FROM customer WHERE email='$Email' AND pwd='$Pass'";
-
-        $res = mysqli_query($conn, $sql);
-   
-        $num = mysqli_num_rows($res);
-    // hello
-        if($num > 0)
-        {
-          echo '
-          <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Successfully!</strong> Looged In😊.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
-        
-            // header('Location: index.php');
-            exit();
-
-        }
-        else
-        {
-          echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Soory!</strong>you are not Looged In🤔🤔.
-          <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-            <span>X</span>
-          </button>
-        </div>';
-        }
-    }
-?>
