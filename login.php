@@ -7,7 +7,6 @@ session_start();
         $username = "root"; 
         $password = "";
         $database = "phpproject"; 
-        //Hello this is the change
         $conn = mysqli_connect($server, $username, $password, $database);
 
         $name = $_POST["name"];
@@ -19,7 +18,6 @@ session_start();
         $res = mysqli_query($conn, $sql);
    
         $num = mysqli_num_rows($res);
-    // hello
         if($num == 1)
         {
          
@@ -85,10 +83,6 @@ session_start();
                                 <h3 class="display-4 py-5">Sign In</h3>
                                 <!-- <p class="text-muted mb-4">Create a login split page using Bootstrap 4.</p> -->
                                 <form action="login.php" method="post">
-                                    <div class="form-group mb-3">
-                                        <input id="UserName" type="text" placeholder="User Name" required=""
-                                            autofocus="" name="name" class="form-control rounded-pill border-0 shadow-sm px-4">
-                                    </div>
                                     <div class="form-group mb-3">
                                         <input id="inputEmail" type="email" placeholder="Email address" required=""
                                              name="email" class="form-control rounded-pill border-0 shadow-sm px-4">
