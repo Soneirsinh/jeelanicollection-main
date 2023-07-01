@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+error_reporting(0);
 ?>
 <!doctype html>
 <html lang="en">
@@ -9,12 +9,16 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jeelani collection | Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
 <body>
@@ -33,7 +37,7 @@ session_start();
                         <div class="card-body">
 
                             <!-- Single item -->
-                            
+
                             <?php
                             $server = "localhost";
                             $username = "root";
@@ -45,7 +49,7 @@ session_start();
                             }
                             $em = $_SESSION['email'];
 
-                            $sql = "SELECT * FROM cart ";
+                            $sql = "SELECT * FROM cart where email='$em'";
 
                             $res = mysqli_query($conn, $sql);
 
@@ -99,11 +103,11 @@ session_start();
                                             </button>
                                             
                                             <div class="form-outline">
-                                            <input id="form1" min="0" name="quantity" value="1" type="number"
+                                            <input id="form1" min="0" name="quantity" value="1" type="number" placeholder="Quantity"
                                             class="form-control" />
                                             <label class="form-label" for="form1">Quantity</label>
-                                            </div>
                                             
+                                            </div>
                                             <button class="btn btn-primary px-3 ms-2"
                                             onclick="this.parentNode.querySelector(`input[type=number]`).stepUp()">
                                             <i class="fas fa-plus"></i>
