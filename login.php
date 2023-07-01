@@ -1,6 +1,7 @@
 <?php
-session_start();
-
+    
+    session_start();
+    
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $server = "localhost";
@@ -9,7 +10,6 @@ session_start();
         $database = "phpproject"; 
         $conn = mysqli_connect($server, $username, $password, $database);
 
-        $name = $_POST["name"];
         $Email = $_POST["email"];
         $Pass = $_POST["pswd"];
 
@@ -20,23 +20,19 @@ session_start();
         $num = mysqli_num_rows($res);
         if($num == 1)
         {
-         
             $_SESSION['name']=$name;
-
             header("Location: index.php");
-
         }   
         else
         {
           echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Soory!</strong>you are not Looged In🤔🤔.
-          <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-            <span>X</span>
+          <strong>Please Enter valid credentials !</strong>
           </button>
         </div>';
         }
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

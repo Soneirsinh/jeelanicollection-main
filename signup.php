@@ -1,3 +1,40 @@
+<?php
+    session_start();        
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        $server = "localhost";
+        $username = "root"; 
+        $password = "";
+        $database = "phpproject"; 
+
+        $conn = mysqli_connect($server, $username, $password, $database);
+
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $pass = $_POST["pswd"];
+        $city = $_POST["city"];
+
+        $sql = "INSERT INTO customer (`name`, `email`, `pwd`, `city`)VALUES('$name', '$email', '$pass', '$city')";
+
+        $res = mysqli_query($conn, $sql);
+   
+        if($res)
+        {
+
+            // $_SESSION['username']=$name;
+            header('location:login.php');
+
+        }
+        else{
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Soory!</strong>you are not Registration🤔🤔.
+            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+            <span>X</span>
+            </button>
+            </div>';
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,48 +116,3 @@
 </body>
 
 </html>
-
-<?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        session_start();        
-        $server = "localhost";
-        $username = "root"; 
-        $password = "";
-        $database = "phpproject"; 
-
-        $conn = mysqli_connect($server, $username, $password, $database);
-
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $pass = $_POST["pswd"];
-        $city = $_POST["city"];
-
-        $sql = "INSERT INTO customer (`name`, `email`, `pwd`, `city`)VALUES('$name', '$email', '$pass', '$city')";
-
-        $res = mysqli_query($conn, $sql);
-   
-        if($res)
-        {
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Successfully!</strong> Your Data Insert Successfully, Thank You for Registration!😊.
-            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-              <span>X</span>
-            </button>
-          </div>';
-
-            // echo "Login sucess";
-            $_SESSION['username']=$name;
-            // header('location:login.php');
-
-        }
-        else{
-            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Soory!</strong>you are not Registration🤔🤔.
-            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-            <span>X</span>
-            </button>
-            </div>';
-        }
-    }
-?>
