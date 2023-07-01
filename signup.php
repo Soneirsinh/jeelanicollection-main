@@ -111,6 +111,7 @@
 
             // echo "Login sucess";
             $_SESSION['username']=$name;
+            // header('location:login.php');
 
         }
         else{
