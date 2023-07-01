@@ -20,7 +20,8 @@
         $num = mysqli_num_rows($res);
         if($num == 1)
         {
-            $_SESSION['name']=$name;
+            // $_SESSION['name']=$name;
+            $_SESSION['email']=$Email;
             header("Location: index.php");
         }   
         else
