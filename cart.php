@@ -22,6 +22,66 @@ error_reporting(0);
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg bg-dark sticky-top ">
+    <div class="container-fluid ">
+      <a class="navbar-brand " href="#">
+        <img src="logo_nobg.png" alt="Logo" width="199" class="d-inline-block align-text-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+      <div class="collapse navbar-collapse text-white" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item p-2">
+            <a class="nav-link active text-white" aria-current="page" href="index.php">Home</a>
+          </li>
+
+          <?php
+          if (!isset($_SESSION['email'])) {
+            echo '<li class="nav-item p-2">
+            <a class="nav-link active text-white" aria-current="page" href="signup.php">SignUp</a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="nav-link text-white" href="login.php">Login</a>
+          </li>';
+          } else {
+            echo '<li class="nav-item p-2">
+            <a class="nav-link active text-white" aria-current="page" href="#collection" >Collection</a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="nav-link text-white" href="cart.php">Cart</a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="nav-link text-white" href="logout.php">Logout</a>
+          </li>';
+          }
+          ?>
+
+          <!--<li class="nav-item p-2">
+            <a class="nav-link text-white" href="collection.html">Collection</a>
+          </li>
+           <li class="nav-item p-2">
+            <a class="nav-link text-white" href="#">Pricing</a>
+          </li>
+         <li class="nav-item p-2">
+            <a class="nav-link text-white" href="#popular">Popular</a>
+          </li>
+           <li class="nav-item p-2">
+            <a class="nav-link text-white" href="about_us.html">About us</a>
+          </li> -->
+        </ul>
+
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+      </div>
+    </div>
+  </nav>
+  
+
     <section class="h-100 gradient-custom">
         <div class="container py-5">
             <div class="row d-flex justify-content-center my-4">
@@ -147,11 +207,11 @@ error_reporting(0);
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Products
-                                    <span>$53.98</span>
+                                    <span>₹ 18000</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                                     Shipping
-                                    <span>Gratis</span>
+                                    <span>+ 0.00</span>
                                 </li>
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
@@ -161,7 +221,7 @@ error_reporting(0);
                                             <p class="mb-0">(including VAT)</p>
                                         </strong>
                                     </div>
-                                    <span><strong>$53.98</strong></span>
+                                    <span><strong>₹ 18000</strong></span>
                                 </li>
                             </ul>
 
