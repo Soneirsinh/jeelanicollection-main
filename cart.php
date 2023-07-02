@@ -118,7 +118,7 @@ error_reporting(0);
                                 if ($p>=31) {
                                   $query = "SELECT * from woman where p_id=$p";
                                 }
-                                if ($p>=11) {
+                                elseif ($p>=11) {
                                   $query = "SELECT * from man where p_id=$p";
                                 }
                                 else {
@@ -238,7 +238,7 @@ error_reporting(0);
                                             <p class="mb-0">(including VAT)</p>
                                         </strong>
                                     </div>
-                                    <span><strong>₹ 18000</strong></span>
+                                    echo '<span><strong>₹ 18000</strong></span>';
                                 </li>
                             </ul>
 
