@@ -115,6 +115,9 @@ error_reporting(0);
                             while ($r = mysqli_fetch_assoc($res)) {
                                 $em = $r['email'];
                                 $p = $r['p_id'];
+                                if ($p>=31) {
+                                  $query = "SELECT * from woman where p_id=$p";
+                                }
                                 if ($p>=11) {
                                   $query = "SELECT * from man where p_id=$p";
                                 }
