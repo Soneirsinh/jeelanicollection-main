@@ -76,7 +76,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-10 col-xl-7 mx-auto">
-                                <a href="index.html">
+                                <a href="index.php">
                                     <img src="logo_nobg.png" alt="Logo" width="199" class="d-inline-block align-text-top">
                                 </a>
                                 <h3 class="display-4 py-5">Sign Up</h3>
