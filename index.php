@@ -181,13 +181,13 @@ session_start();
         <div class="collection-list mt-4 row gx-0 gy-3">
           <?php
 
-          $server = "localhost";
-          $username = "root";
-          $password = "";
-          $database = "phpproject";
+          // $server = "localhost";
+          // $username = "root";
+          // $password = "";
+          // $database = "phpproject";
 
-          $conn = mysqli_connect($server, $username, $password, $database);
-          
+          // $conn = mysqli_connect($server, $username, $password, $database);
+          include 'connect.php';
           $sql = 'SELECT * from product';
           $res = mysqli_query($conn, $sql);
 

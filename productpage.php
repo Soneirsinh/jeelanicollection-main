@@ -129,11 +129,7 @@ session_start();
             <div class="row gx-4 gx-lg-5 align-items-center">
                 <div class="col-md-6">
                     <?php
-                    $server = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $database = "phpproject";
-                    $conn = mysqli_connect($server, $username, $password, $database);
+                    include 'connect.php';
                     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         $p = $_GET['p_id'];
                         if ($p >= 31) {

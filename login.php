@@ -4,11 +4,7 @@
     
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        $server = "localhost";
-        $username = "root"; 
-        $password = "";
-        $database = "phpproject"; 
-        $conn = mysqli_connect($server, $username, $password, $database);
+        include 'connect.php';
 
         $Email = $_POST["email"];
         $Pass = $_POST["pswd"];

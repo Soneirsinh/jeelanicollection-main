@@ -145,11 +145,7 @@ error_reporting(0);
                             <!-- Single item -->
 
                             <?php
-                            $server = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $database = "phpproject";
-                            $conn = mysqli_connect($server, $username, $password, $database);
+                            include 'connect.php';
                             $em = $_SESSION['email'];
 
                             $sql = "SELECT * FROM cart where email='$em'";
