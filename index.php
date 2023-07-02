@@ -130,7 +130,7 @@ session_start();
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="./images/banner-img-1.jpg" class="d-block w-100" alt="...">
+        <img src="images/banner-img-1.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h2>New Arrivals</h2>
           <p>Shop Now</p>
