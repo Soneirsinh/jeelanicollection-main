@@ -21,6 +21,50 @@ error_reporting(0);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+
+      <style>
+    body {
+      font-family: 'Abel', Georgia, 'Times New Roman', Times, serif
+    }
+
+    .navbar {
+      margin: 0;
+      padding: 0;
+      box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .active-filter-btn {
+      background-color: var(--pink) !important;
+      color: #fff !important;
+      border-color: var(--pink) !important;
+    }
+
+    .filter-button-group .btn:hover {
+      color: #fff !important;
+    }
+
+    .collection-img span {
+      top: 20px;
+      right: 20px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+    }
+
+    footer {
+      background-color: rgb(26, 17, 17);
+      /* height: 50px; */
+      color: azure;
+      padding: 24px;
+      text-align: center;
+      margin-top: -4px;
+    }
+
+    .navbar-toggler {
+      background-color: darkgoldenrod;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -238,7 +282,7 @@ error_reporting(0);
                                             <p class="mb-0">(including VAT)</p>
                                         </strong>
                                     </div>
-                                    echo '<span><strong>₹ 18000</strong></span>';
+                                    <span><strong>₹ 18000</strong></span>
                                 </li>
                             </ul>
 

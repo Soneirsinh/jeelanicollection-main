@@ -81,7 +81,7 @@ session_start();
       <div class="collapse navbar-collapse text-white" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item p-2">
-            <a class="nav-link active text-white" aria-current="page" href="index.php">Home</a>
+            <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
           </li>
 
           <?php
@@ -97,33 +97,23 @@ session_start();
             <a class="nav-link active text-white" aria-current="page" href="#collection" >Collection</a>
           </li>
           <li class="nav-item p-2">
-            <a class="nav-link text-white" href="cart.php">Cart</a>
+            <a class="nav-link text-white" href="#mens">Men</a>
           </li>
           <li class="nav-item p-2">
-            <a class="nav-link text-white" href="logout.php">Logout</a>
-          </li>';
-          }
-          ?>
-
-          <!--<li class="nav-item p-2">
-            <a class="nav-link text-white" href="collection.html">Collection</a>
+            <a class="nav-link text-white" href="#womens">Women</a>
           </li>
-           <li class="nav-item p-2">
-            <a class="nav-link text-white" href="#">Pricing</a>
+          <li class="nav-item p-2">
+            <a class="nav-link text-white" href="cart.php">Cart</a>
+          </li> 
+          </ul>
+          
+          <ul class="navbar-nav ">
+          <li class="nav-item p-2 ">
+          <a class="nav-link text-white" href="logout.php">Logout</a>
           </li>
-         <li class="nav-item p-2">
-            <a class="nav-link text-white" href="#popular">Popular</a>
-          </li>
-           <li class="nav-item p-2">
-            <a class="nav-link text-white" href="about_us.html">About us</a>
-          </li> -->
-        </ul>
-
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-
+          </ul>';
+        }
+            ?>
       </div>
     </div>
   </nav>
@@ -207,8 +197,8 @@ session_start();
               '
               <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
               <div class="collection-img position-relative">
-              <img src="' . $r['img_path'] . '" class="w-100">
-              <a href="" class="Likebtn"><span title="Add to wishlist"
+              <a href="productpage.php?p_id='.$r['p_id'].'" ><img src="' . $r['img_path'] . '" class="w-100" height="400px"></a>
+              <a href="index.php?pl_id='.$r['p_id'].'" class="Likebtn"><span title="Add to wishlist"
               class="position-absolute bg-danger text-white d-flex align-items-center justify-content-center bg-opacity-50">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
               <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
@@ -230,15 +220,8 @@ session_start();
             }
             echo '</div>';
           }
-          // if (isset($_GET['cart'])) {
-          //   $em=$_SESSION['email'];
-          //   $pid = $_GET['cart'];
-          //   // echo $em .$pid;
-          //     $query="INSERT INTO `cart` (`email`, `p_id`) VALUES ('$em', '$pid');";
-          //     mysqli_query($conn,$query);
-          // }
 
-          echo "<hr><h2 class='text-center'>Mens</h2><hr>";
+          echo "<hr id='mens' class='mb-5'><h2 class='text-center'>Mens</h2><hr>";
 
           $sql = 'SELECT * from man';
           $res = mysqli_query($conn, $sql);
@@ -249,8 +232,8 @@ session_start();
               '
               <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
               <div class="collection-img position-relative">
-              <img src="' . $r['img_path'] . '" class="w-100">
-              <a href="" class="Likebtn"><span title="Add to wishlist"
+              <a href="productpage.php?p_id='.$r['p_id'].'" ><img src="' . $r['img_path'] . '" class="w-100"></a>
+              <a href="index.php?pl_id='.$r['p_id'].'" class="Likebtn"><span title="Add to wishlist"
               class="position-absolute bg-danger text-white d-flex align-items-center justify-content-center bg-opacity-50">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
               <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
@@ -272,7 +255,7 @@ session_start();
             }
             echo '</div>';
           }
-          echo "<hr><h2 class='text-center'>Womens</h2><hr>";
+          echo "<hr id='womens' class='mb-5'><h2 class='text-center' >Womens</h2><hr>";
 
           $sql = 'SELECT * from woman';
           $res = mysqli_query($conn, $sql);
@@ -283,8 +266,8 @@ session_start();
               '
               <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
               <div class="collection-img position-relative">
-              <img src="' . $r['img_path'] . '" class="w-100">
-              <a href="" class="Likebtn"><span title="Add to wishlist"
+              <a href="productpage.php?p_id='.$r['p_id'].'" ><img src="' . $r['img_path'] . '" class="w-100"></a>
+              <a href="index.php?pl_id='.$r['p_id'].'" class="Likebtn"><span title="Add to wishlist"
               class="position-absolute bg-danger text-white d-flex align-items-center justify-content-center bg-opacity-50">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
               <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
@@ -305,6 +288,9 @@ session_start();
               </div>';
             }
             echo '</div>';
+          }
+          if(isset($_GET['pl_id'])){
+            echo $_GET['pl_id'];
           }
           if (isset($_GET['cart'])) {
             $em=$_SESSION['email'];
@@ -322,7 +308,7 @@ session_start();
   <!-- end of collection -->
 
   <!-- popular -->
-  <section id="popular" class="py-5">
+  <!-- <section id="popular" class="py-5">
     <div class="container">
       <div class="title text-center pt-3 pb-5">
         <h2 class="position-relative d-inline-block ms-4">Popular Of This Year</h2>
@@ -405,7 +391,7 @@ session_start();
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- end of popular -->
 
   <!-- Footer -->
