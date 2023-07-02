@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,7 +26,7 @@ error_reporting(0);
 <body>
 <nav class="navbar navbar-expand-lg bg-dark sticky-top ">
     <div class="container-fluid ">
-      <a class="navbar-brand " href="#">
+      <a class="navbar-brand " href="index.php">
         <img src="logo_nobg.png" alt="Logo" width="199" class="d-inline-block align-text-top">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -105,9 +106,6 @@ error_reporting(0);
                             $password = "";
                             $database = "phpproject";
                             $conn = mysqli_connect($server, $username, $password, $database);
-                            if (!$conn) {
-                                die('chala ja bsdk');
-                            }
                             $em = $_SESSION['email'];
 
                             $sql = "SELECT * FROM cart where email='$em'";
@@ -117,8 +115,12 @@ error_reporting(0);
                             while ($r = mysqli_fetch_assoc($res)) {
                                 $em = $r['email'];
                                 $p = $r['p_id'];
-
-                                $query = "SELECT * from product where p_id=$p";
+                                if ($p>=11) {
+                                  $query = "SELECT * from man where p_id=$p";
+                                }
+                                else {
+                                  $query = "SELECT * from product where p_id=$p";
+                                }
                                 $result = mysqli_query($conn, $query);
                                 echo "<br>";
 
@@ -144,11 +146,23 @@ error_reporting(0);
                                         <p>Category : ' . $r['category'] . '</p>
                                         <p>Color: blue</p>
                                         <p>Size: M</p>
-                                        <button type="button" class="btn btn-primary btn-sm me-1 mb-2"
-                                        data-mdb-toggle="tooltip" title="Remove item">
+                                        <form action="cart.php" method="get">
+                                        <button type="submit" class="btn btn-primary btn-sm me-1 mb-2"
+                                        data-mdb-toggle="tooltip" name="citem" value="'.$p.'" title="Remove item">
                                         <i class="fas fa-trash"></i>
                                         </button>
-                                        <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
+                                        </form>';
+                                        if (isset($_GET['citem'])) {
+                                          $citem = $_GET['citem'];
+                                          $q = "DELETE FROM cart WHERE `p_id` = '$citem' and `email`='$em'";
+                                          $result=mysqli_query($conn,$q);
+                                          
+                                          if ($result) {
+                                            header("Refresh:0");
+                                          }
+                                          header("Refresh:2");
+                                        }
+                                        echo '<button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
                                         title="Move to the wish list">
                                         <i class="fas fa-heart"></i>
                                         </button>
@@ -187,7 +201,6 @@ error_reporting(0);
                                 <hr class="my-4" />';
                                 }
                             }
-
                             ?>
 
 
